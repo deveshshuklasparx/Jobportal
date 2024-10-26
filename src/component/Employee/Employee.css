@@ -1,0 +1,86 @@
+
+.employee-wrapper .container {
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 30px;
+    padding: 60px 60px;
+    margin-bottom: 100px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.employee-wrapper h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+.employee-wrapper form{
+    display: block;
+    width: 100%;
+}
+.employee-wrapper .upload-area {
+    border-radius: 10px;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+    position: relative;
+    background: transparent linear-gradient(117deg, #2333B4 0%, #621BC2 100%) 0% 0% no-repeat padding-box;
+    margin-bottom: 20px;
+}
+
+.employee-wrapper .upload-area:hover {
+    background-color: black;
+}
+
+.employee-wrapper .upload-label {
+    display: block;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+}
+.employee-wrapper .upload-area:hover .upload-label{
+    color: white;
+}
+
+.employee-wrapper .browse {
+    color: #000633;
+    text-decoration: underline;
+}
+.employee-wrapper .upload-area:hover .browse{
+    color: white;
+}
+
+.employee-wrapper input[type="file"] {
+    display: none;
+}
+
+.employee-wrapper button {
+    width: 100%;
+    padding: 15px;
+    background: #E88D15 0% 0% no-repeat padding-box;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.employee-wrapper button:hover {
+    background: #fff;
+    color: #2333B4;
+    border: 1px solid #2333B4;
+}
+
+.employee-wrapper button:focus {
+    outline: none;
+}
