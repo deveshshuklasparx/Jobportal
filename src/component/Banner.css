@@ -15,7 +15,6 @@
   justify-content: space-between;
   padding: 60px;
   border-radius: 15px;
-  background: transparent linear-gradient(117deg, #2333B4 0%, #621BC2 100%) 0% 0% no-repeat padding-box;
 }
 .banner-wrapper .left-section{
   max-width: 60%;
@@ -24,13 +23,13 @@
 .banner-wrapper h1{
    font-size: 65px;
    line-height: 70px;
-   color: #ffffff;
+   color: #020D61;
    font-weight: 300;
    margin-bottom: 15px;
 }
 .banner-wrapper .left-section p{
   margin-bottom: 25px;
-  color: #ffffff;
+  color: #020D61;
   line-height: 30px;
   font-size: 23px;
 }
@@ -48,6 +47,6 @@
   transition: all 0.3s ease-in-out;
 }
 .hiring-btn:hover{
-  background: #fff;
-  color: #2333B4;
+  background: #020D61;
+  color: #fff;
 }

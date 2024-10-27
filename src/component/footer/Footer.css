@@ -1,4 +1,8 @@
 
+.footer{
+  background: #020D61;
+  padding: 60px 0;
+}
 .footer .container{
   align-items: baseline;
 }

@@ -3,6 +3,8 @@ import React from 'react';
 import './Banner.css';
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
+import Card from "./Card/Card";
+
 // import image from '../../src/assets/images/banner-img.svg'
 const Banner = () => {
    
@@ -31,6 +33,8 @@ const Banner = () => {
                     </div>
                  </div>
               </section>
+              <Card/>
+
               <Footer/>
            </>
     )
