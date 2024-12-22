@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './Header.css';
 import { Outlet, Link } from "react-router-dom";
 
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Function to toggle the menu visibility on mobile
+    const toggleMenu = () => {
+      setIsMenuOpen(prevState => !prevState);
+    };
   return (
     <>
     <header className="header-wrapper">
         <div className="container">
         <a>Logo</a>
-            <ul className='header-link-wrapper'>
-              
+        <div className="hamburger-menu" onClick={toggleMenu}>
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </div>
+      <ul  className={`header-link-wrapper ${isMenuOpen ? 'show' : ''}`}>              
            
                     <li className='header-links'>
                         <Link to="/banner">About Us</Link>

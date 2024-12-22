@@ -4,16 +4,25 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
+    flex-wrap: wrap;
   }
   .card-sections-wrap:nth-child(even) figure{
     margin-right: 0;
     order: 1;
     position: relative;
     left: 35px;
+    @media only screen and (max-width: 600px) {
+      left: 0;
+    }
+
   } 
   .card-sections-wrap:nth-child(even)  .right-shipping {
     width: 40%;
     padding-left: 40px;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      padding-left: 0;
+    }
   }
 .card-sections-wrap figure {
     width: 62.6%;
@@ -22,12 +31,18 @@
     border-radius: 10px;
     margin-right: 131px;
     max-width: 559px;
-  }
-.card-sections-wrap figure img{
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
 
-}
+  }
 .right-card{
     width: 33%;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+  }
 }
 .card-heading{
     color: #020D61;
