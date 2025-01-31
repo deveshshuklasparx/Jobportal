@@ -33,6 +33,16 @@
     padding-right: 0;
   }
 }
+.banner-section-wrappers .right-section{
+  width: 40%;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+}
+.banner-section-wrappers .right-section img{
+  width: 100%;
+}
 .banner-wrapper h1{
    font-size: 65px;
    line-height: 70px;
