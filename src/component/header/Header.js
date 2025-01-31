@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Header.css';
 import { Outlet, Link } from "react-router-dom";
+import Logo from "./../../logo.jpg"
 
 
 const Header = () => {
@@ -14,7 +15,10 @@ const Header = () => {
     <>
     <header className="header-wrapper">
         <div className="container">
-        <a>Logo</a>
+        <Link to="/" className="logo">
+
+            <img src={Logo} alt="Company Logo" />
+            </Link>
         <div className="hamburger-menu" onClick={toggleMenu}>
         <span className="bar"></span>
         <span className="bar"></span>

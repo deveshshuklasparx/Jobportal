@@ -57,3 +57,19 @@
     color: #020D61;
     line-height: 1.5;
 }
+@media only screen and (max-width: 600px) {
+  .card-sections-wrap img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .banner-section-wrappers{
+    flex-wrap: wrap;
+  }
+  .right-section {
+    margin-top: 20px;
+  }
+  .right-section img{
+    width: 100%
+  }
+}

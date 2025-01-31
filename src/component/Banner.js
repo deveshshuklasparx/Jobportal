@@ -4,8 +4,8 @@ import './Banner.css';
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import Card from "./Card/Card";
+import bannerImg from "./../../src/assets/images/Capture.png"
 
-// import image from '../../src/assets/images/banner-img.svg'
 const Banner = () => {
    
     
@@ -17,7 +17,7 @@ const Banner = () => {
                     <div className="banner-section-wrappers">
                        <div className="left-section">
                           <h1>
-                             Expert Tech & Engineering Talent Recruitment
+                             We provide best recruitment services
                           </h1>
                           <p>
                              Prometeo Talent excels in connecting companies with exceptional tech and engineering professionals. Our HR and recruitment services include targeted recruiting, efficient staffing, and flexible outsourcing solutions. Partner with us to enhance your global workforce and drive business success.
@@ -28,7 +28,7 @@ const Banner = () => {
                           </div>
                        </div>
                        <div className="right-section">
-                          {/* <img src={image} /> */}
+                       <img src={bannerImg} alt="Company Logo" />
                        </div>
                     </div>
                  </div>

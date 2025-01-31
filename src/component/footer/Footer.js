@@ -1,13 +1,14 @@
 import React from 'react'
 import './Footer.css';
+import footerlogo from "./../../logo.jpg"
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-parts container">
         <div className="common-footer first-footer">
-          <a href="" className="desk-logo">
-            <img className="light-logo" src="assets/images/logo-white.svg" alt="Scavenger Logo" />
+          <a href="" className="logo">
+            <img className="light-logo" src={footerlogo} alt="Scavenger Logo" />
           </a>
 
           <h5 className="">Any time. Any where.</h5>
