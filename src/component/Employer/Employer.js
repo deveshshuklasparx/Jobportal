@@ -3,6 +3,7 @@ import emailjs from 'emailjs-com';
 import './Employer.css';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import jobSeeker from "./../../assets/images/job-seeker.png"
 
 const Employer = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const Employer = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_gjtuzkc', 'template_91n1g3p', e.target, 'JK5QJLC-gN2Iow_Q6') // Replace with your service, template, and user IDs
+      .sendForm('service_gjtuzkc', 'template_91n1g3p', e.target, 'JK5QJLC-gN2Iow_Q6')
       .then(
         (result) => {
           alert('Email sent successfully');
@@ -40,9 +41,18 @@ const Employer = () => {
       <Header />
       <div className='employer-wrapper'>
         <div className="container">
-          <h1>User Information</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
+
+          <div className='form-wrapper-emp'>
+            <div className='form-info'>
+            <img src={jobSeeker} alt="Job Seeker" className='job-seeker'/>
+
+            <h1>User Information</h1>
+            <p>dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            </div>
+          <form className='main-form' onSubmit={handleSubmit}>
+            <div className="form-group user-box">
               <label htmlFor="firstName">First Name</label>
               <input
                 type="text"
@@ -88,6 +98,8 @@ const Employer = () => {
             </div>
             <button type="submit">Submit</button>
           </form>
+          </div>
+          
         </div>
       </div>
       <Footer />

@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import './Employee.css'
-
+import upload from "./../../assets/images/upload.png"
+ 
 const Employee = () => {
     const [email, setEmail] = useState('');
     const [file, setFile] = useState(null);
@@ -65,8 +66,13 @@ const Employee = () => {
       <Header/>
       <div className='employee-wrapper'>
         <div className="container">
+            <div className='upload-left'>
             <h1>Upload Your File</h1>
-            <form onSubmit={handleSubmit}>
+
+            <img src={upload} alt="Job Seeker" className='job-seeker'/>
+
+            </div>
+            <form className="upload-right-form" onSubmit={handleSubmit}>
                 <input
                     type="email"
                     value={email}
@@ -74,11 +80,6 @@ const Employee = () => {
                     placeholder="Enter your email"
                     required
                 />
-                {/* <input
-                    type="file"
-                    onChange={handleFileChange}
-                    required
-                /> */}
                  <div class="upload-area">
                 <label for="file" class="upload-label">
                     Drag & Drop your files here or <span class="browse">Browse</span>

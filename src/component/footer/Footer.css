@@ -1,6 +1,6 @@
 
 .footer{
-  background: #020D61;
+  background: #F5F5F5;
   padding: 60px 0;
 }
 .footer .container{
@@ -31,12 +31,13 @@
 .common-footer p,
 .common-footer li a,
 .common-footer h5{
-color: #fff;
+color: #009688;
 }
 .common-footer li a{
 font-size: 16px;
 transition: all 0.3s ease-in-out;
 margin-bottom: 15px;
+font-weight: 600;
 @media only screen and (max-width: 600px) {
   font-size: 14px;
 }
@@ -49,6 +50,7 @@ margin-bottom: 15px;
 font-size: 20px;
 margin-bottom: 16px;
 font-weight: 700;
+color: #000;
 }
 .footer-parts .first-footer{
 width: 25%;
@@ -59,6 +61,6 @@ width: 25%;
 .footer-parts .first-footer p,
 .footer-parts .copy-wrapper span{
 font-size: 12px;
-color: #fff;
+color: #FF9800;
 margin-bottom: 62px;
 }
