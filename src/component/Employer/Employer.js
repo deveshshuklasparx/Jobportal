@@ -10,7 +10,6 @@ const Employer = () => {
     firstName: '',
     lastName: '',
     email: '',
-    graduationMarks: '',
   });
 
   const handleChange = (e) => {
@@ -82,17 +81,6 @@ const Employer = () => {
                 name="email"
                 required
                 value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="graduationMarks">Graduation Marks</label>
-              <input
-                type="number"
-                id="graduationMarks"
-                name="graduationMarks"
-                required
-                value={formData.graduationMarks}
                 onChange={handleChange}
               />
             </div>
