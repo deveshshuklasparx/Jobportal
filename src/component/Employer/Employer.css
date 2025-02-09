@@ -119,10 +119,9 @@
             padding: 0px 0 30px;
             
         }
-        .job-seeker{
-            width: 100%;
-        }
+        
     }
+    
     .main-form{
         width: 60%;
         padding: 50px 80px;
@@ -131,4 +130,7 @@
             padding: 10px 0;
         }
 }
+}
+.job-seeker{
+    width: 100%;
 }
