@@ -103,6 +103,7 @@
 .form-wrapper-emp{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     p{
         color: #fff;
         font-size: 16px;

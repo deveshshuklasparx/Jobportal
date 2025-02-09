@@ -131,3 +131,11 @@
         padding: 20px 0 0px
     }
 }
+.file-name{
+    font-size: 14px;
+    color: #1cbf72;
+    margin-top: 5px;
+    strong{
+        color: #000;
+    }
+}

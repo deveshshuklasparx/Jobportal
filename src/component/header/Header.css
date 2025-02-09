@@ -17,6 +17,7 @@
 
     .container{
         margin-block: 15px;
+        overflow: hidden;
     }
     
 }
@@ -24,32 +25,42 @@
     display: flex;
     align-items: center;
     list-style: none;
+    transition: all 0.3s linear;
     .header-links{
         margin-right: 30px;
         &:last-child{
             margin-right: 0;
         }
         a{
-            color: #009688;
+            color: #1cbf72;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
+            border-bottom: 4px solid transparent;
+
+        }
+        a.active{
+          border-bottom: 4px solid #1cbf72;
+          @media only screen and (max-width: 600px) {
+            border: none;
+          }
         }
         a:hover{
-            color: #009688;
-            text-decoration: underline;
+            color: #1cbf72;
+            border-bottom: 4px solid #1cbf72;
+
         }
     }
 }
 @media (max-width: 768px) {
       .header-link-wrapper {
-        display: none; /* Hide navigation links by default */
+
         flex-direction: column;
         position: absolute;
         top: 112px;
-        right: 0;
+        right: -100%;
         background-color: #fff;
         width: 100%;
         padding: 0px 0;
@@ -59,9 +70,7 @@
       .header-links {
         margin-left: 0;
         text-align: center;
-        padding: 10px;
         margin: 0  !important;
-        border-bottom: 2px solid #E88D15;
         width: 100%;
         color: #000;
 
@@ -70,24 +79,48 @@
         color: #000 !important;
         width: 100%;
         display: block;
+        padding: 10px;
+        border-bottom: 2px solid #1cbf72 !important;
 
+        &.active{
+          background-color: #1cbf72;
+          color: #fff !important;
+        }
       }
 
       /* Show the hamburger menu on smaller screens */
       .hamburger-menu {
         display: flex;
         flex-direction: column;
+        border: none;
       }
       .hamburger-menu .bar{
         width: 30px;
         height: 3px;
         margin-bottom: 4px;
-        background: #009688;
+        background: #1cbf72;
+        transition: all 0.3s linear;
+      }
+      .hamburger-menu.toggle{
+        transition: all 0.3s linear;
+
+        .center-bar{
+         opacity:  0;
+        }
+        .bar:first-child{
+          transform: rotate(45deg);
+          position: relative;
+          top: 14px;      
+        }
+        .last-bar{
+          transform: rotate(-45deg);
+        }
       }
 
       /* Show the nav links when the hamburger is clicked */
       .header-link-wrapper.show {
         display: flex;
+        right: 0;
       }
     }
     .logo{

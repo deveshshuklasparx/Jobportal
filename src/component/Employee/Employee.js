@@ -1,101 +1,134 @@
-// src/Employee.js
-import React, { useState } from 'react';
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
-import './Employee.css'
-import upload from "./../../assets/images/upload.png"
- 
-const Employee = () => {
-    const [email, setEmail] = useState('');
-    const [file, setFile] = useState(null);
-    const [message, setMessage] = useState('');
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
+import "./Employee.css";
+import upload from "./../../assets/images/upload.png";
 
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
+const Employee = () => {
+    const [email, setEmail] = useState("");
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [fileName, setFileName] = useState("");
+    const [isUploading, setIsUploading] = useState(false);
+    const [uploadedFileUrl, setUploadedFileUrl] = useState("");
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+        setFileName(file ? file.name : ""); 
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const uploadFileToCloudinary = async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "your_upload_preset"); 
 
-        if (!file) {
-            setMessage('Please select a file.');
+        try {
+            setIsUploading(true);
+            const response = await fetch("https://api.cloudinary.com/v1_1/your_cloud_name/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error?.message || "Upload failed");
+            }
+
+            setUploadedFileUrl(data.secure_url); // Store uploaded file URL
+            setIsUploading(false);
+            return data.secure_url;
+        } catch (error) {
+            console.error("Cloudinary upload error:", error.message);
+            alert("File upload failed: " + error.message);
+            setIsUploading(false);
+            return null;
+        }
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        if (!selectedFile) {
+            alert("Please upload a file.");
             return;
         }
 
-        const reader = new FileReader();
-        reader.onloadend = (event) => {
-            const fileData = event.target.result.split(',')[1]; // Get base64 string
+        const fileUrl = await uploadFileToCloudinary(selectedFile);
+        if (!fileUrl) {
+            alert("File upload failed.");
+            return;
+        }
 
-            // Check if window.Email is defined
-            if (!window.Email) {
-                setMessage('Email service is not loaded. Please try again.');
-                return;
-            }
-            // Sending email using SMTP.js
-            window.Email.send({
-                Host: "smtp.elasticemail.com", 
-                Username: "deveshshukla1996@gmail.com",
-                Password: "6BA27668E8AE31A41D68D836FC79F3C0F337",
-                To: "srsaurabh95@gmail.com", // Use the input email
-                From: "deveshshukla1996@gmail.com",
-                Subject: "File Upload",
-                Body: "You have received a new file.",
-                Attachments: [
-                    {
-                        name: file.name,
-                        data: fileData
-                    }
-                ]
-            })
-            .then(() => {
-                setMessage('File uploaded and email sent successfully!');
-                setFile(null); // Reset file after successful send
-                setEmail(''); // Reset email field
-            })
-            .catch((error) => {
-                console.error('Error sending email:', error);
-                setMessage('Failed to send email. Please try again.');
-            });
+        const templateParams = {
+            user_email: email,
+            file_url: fileUrl,
         };
 
-        reader.readAsDataURL(file); // Convert file to base64
+        try {
+            await emailjs.send(
+                "service_gjtuzkc",
+                "template_91n1g3p",
+                templateParams,
+                "JK5QJLC-gN2Iow_Q6"
+            );
+            alert("File sent successfully!");
+        } catch (error) {
+            console.error("Error sending email:", error);
+            alert("Failed to send email.");
+        }
     };
 
     return (
-      <>
-      <Header/>
-      <div className='employee-wrapper'>
-        <div className="container">
-            <div className='upload-left'>
-            <h1>Upload Your File</h1>
+        <>
+            <Header />
+            <div className="employee-wrapper">
+                <div className="container">
+                    <div className="upload-left">
+                        <h1>Upload Your File</h1>
+                        <img src={upload} alt="Job Seeker" className="job-seeker" />
+                    </div>
+                    <form className="upload-right-form" onSubmit={handleSubmit}>
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            name="email"
+                        />
+                        <div className="upload-area">
+                            <label htmlFor="file" className="upload-label">
+                                Drag & Drop your files here or <span className="browse">Browse</span>
+                                <input type="file" required name="file" id="file" onChange={handleFileChange} />
+                                {fileName && (
+                            <p className="file-name">
+                                <strong>Selected File:</strong> {fileName}
+                            </p>
+                        )}
+                            </label>
+                        </div>
 
-            <img src={upload} alt="Job Seeker" className='job-seeker'/>
+                        
 
+                        {uploadedFileUrl && (
+                            <p className="file-link">
+                                <strong>Uploaded File:</strong> 
+                                <a href={uploadedFileUrl} target="_blank" rel="noopener noreferrer">
+                                    {fileName}
+                                </a>
+                            </p>
+                        )}
+
+                        <button type="submit" disabled={isUploading}>
+                            {isUploading ? "Uploading..." : "Submit"}
+                        </button>
+                    </form>
+                </div>
             </div>
-            <form className="upload-right-form" onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                />
-                 <div class="upload-area">
-                <label for="file" class="upload-label">
-                    Drag & Drop your files here or <span class="browse">Browse</span>
-                    <input type="file"
-                    onChange={handleFileChange}
-                    required name="file" id="file"/>
-                </label>
-            </div>
-                <button type="submit">Submit</button>
-            </form>
-            <div id="message">{message}</div>
-        </div>
-
-      </div>
-              <Footer/></>
-        
+            <Footer />
+        </>
     );
 };
 
